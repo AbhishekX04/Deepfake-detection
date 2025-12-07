@@ -206,6 +206,7 @@ It provides a **robust and explainable AI solution** for modern deepfake detecti
 
 ## 📎 Contact
 For queries, collaboration, or improvements:  
+
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Abhishek%20Bathnotra-blue?style=flat-square&logo=linkedin)](https://www.linkedin.com/in/abhishek-bathnotra-b18075374/)
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Deeksha-blue?style=flat-square&logo=linkedin)](https://www.linkedin.com/in/deeksha-%E2%80%8E-23a320297/)
