@@ -209,9 +209,7 @@ For queries, collaboration, or improvements:
 
 <p align="center">
 
-<b>Abhishek&nbsp;|&nbsp;Khushi&nbsp;|&nbsp;Deeksha</b>
-
-<br><br>
+<b>Abhishek&nbsp;|&nbsp;Deeksha</b>;|&nbsp;Khushi&nbsp
 
 <a href="https://www.linkedin.com/in/abhishek-bathnotra-b18075374/">
 <img src="https://img.shields.io/badge/LinkedIn-Abhishek_Bathnotra-blue?style=for-the-badge&logo=linkedin" />
