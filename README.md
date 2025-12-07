@@ -207,10 +207,28 @@ It provides a **robust and explainable AI solution** for modern deepfake detecti
 ## 📎 Contact
 For queries, collaboration, or improvements:  
 
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Abhishek%20Bathnotra-blue?style=flat-square&logo=linkedin)](https://www.linkedin.com/in/abhishek-bathnotra-b18075374/)
+<p align="center">
 
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Deeksha-blue?style=flat-square&logo=linkedin)](https://www.linkedin.com/in/deeksha-%E2%80%8E-23a320297/)
+<b>Abhishek&nbsp;|&nbsp;Khushi&nbsp;|&nbsp;Deeksha</b>
 
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Khushi%20Agarwal-blue?style=flat-square&logo=linkedin)](https://www.linkedin.com/in/khushi-agarwal-683a49287/)
+<br><br>
+
+<a href="https://www.linkedin.com/in/abhishek-bathnotra-b18075374/">
+<img src="https://img.shields.io/badge/LinkedIn-Abhishek_Bathnotra-blue?style=for-the-badge&logo=linkedin" />
+</a>
+
+&nbsp;&nbsp;&nbsp;
+
+<a href="https://www.linkedin.com/in/deeksha-%E2%80%8E-23a320297/">
+<img src="https://img.shields.io/badge/LinkedIn-Deeksha-blue?style=for-the-badge&logo=linkedin" />
+</a>
 
 
+&nbsp;&nbsp;&nbsp;
+
+<a href="https://www.linkedin.com/in/khushi-agarwal-683a49287/">
+<img src="https://img.shields.io/badge/LinkedIn-Khushi_Agarwal-blue?style=for-the-badge&logo=linkedin" />
+</a>
+
+
+</p>
