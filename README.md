@@ -170,13 +170,15 @@ python scripts/micro_expression_analysis.py
 
 ### **Deeksha — Research & Testing**
 - Behavioural Pattern Analysis  
-- Blink/Micro-expression Studies  
-- Documentation Support  
+- Blink/Micro-expression Studies
+- Testing & Verification-1
+- Documentation Support-1  
 
 ### **Khushi Agarwal — Research & Testing**
 - Dataset Processing  
 - Evaluation Metrics  
-- Testing & Verification  
+- Testing & Verification-2
+- Documentation Support-2 
 
 ### 🎓 **College**
 **Lovely Professional University**
