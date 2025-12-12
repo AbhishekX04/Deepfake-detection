@@ -1,234 +1,212 @@
-# Deepfake Detection through Eye Blink Behaviour and Micro-Expression Motion Patterns
+# Deepfake Video Detection Using Eye Blink, Micro-Expression & CNN-LSTM
 
-## 📌 Overview
-This project presents a **behavioural deepfake detection system** that analyzes:
-
-- **Eye blink behaviour abnormalities**
-- **Micro-expression motion inconsistencies**
-- **Manipulated facial regions using Grad-CAM**
-- **CNN + LSTM deep learning architecture for video-based detection**
-
-Unlike traditional deepfake detectors that rely only on pixel features, this project focuses on **human physiological cues** that deepfake models often fail to replicate correctly.
+A hybrid deepfake detection system combining **physiological cues** (eye blink patterns, facial micro-expressions) with **deep learning (CNN + LSTM)** and **Grad-CAM visual explanation**.  
+Works at **frame-level** and detects fake regions with explainability.
 
 ---
 
-## 🚀 Key Features
+## ⭐ Key Features
 
-### ✔ Deepfake Classification (CNN + LSTM)
-Extracts spatial features using **MobileNetV2** and models temporal dynamics with **LSTM**.
+### 1. Frame-Level Deepfake Detection  
+- Extracts sequence of frames  
+- CNN captures spatial features  
+- LSTM captures temporal motion  
+- Output: Probability (Real vs Fake)
 
-### ✔ Eye Blink Behaviour Analysis (EAR Technique)
-Deepfakes often blink:
-- too little,  
-- too slowly, or  
-- in unnatural patterns.
+### 2. Physiological Signal Detection  
+#### Eye Blink  
+- Extract EAR (Eye Aspect Ratio) via Mediapipe  
+- Detect abnormal blink frequency  
 
-We calculate EAR (Eye Aspect Ratio) and estimate:
+#### Micro-Expression Motion  
+- Landmark motion curves  
+- Detect unnatural facial muscle movement  
+
+### 3. Grad-CAM Explainability  
+- Highlights manipulated facial regions  
+- Generates heatmaps + overlays  
+- Transparent model decisions
+
+### 4. Gradio Web App  
+Simple UI for:
+- Video upload  
+- Real/Fake prediction  
+- Confidence  
 - Blink count  
-- Average EAR  
-- Abnormal blink patterns  
-
-### ✔ Micro-Expression Motion Pattern Analysis
-Deepfakes show irregularities in:
-- eyebrow motion  
-- cheek tension  
-- lip corners  
-- eye wrinkles  
-
-We compute a **Facial Motion Energy Map (FMEM)** to detect anomalous motion peaks.
-
-### ✔ Grad-CAM Visualization
-Highlights **frame-level manipulated regions** such as:
-- mouth edges  
-- eyes  
-- cheeks  
-- forehead  
-
-This provides visual explainability for the classification model.
-
-### ✔ Full Video Heatmap Rendering
-Generates a **side-by-side video**:  
-Original frames ↔ Grad-CAM overlay frames.
+- Micro-expression irregularity  
+- Grad-CAM previews  
 
 ---
 
-## 🧠 Model Architecture
-```
-MobileNetV2 → LSTM → Fully Connected Layer → Sigmoid → Real/Fake
-```
-
-- MobileNetV2 extracts spatial features from frames  
-- LSTM models temporal continuity  
-- Output is binary classification (Real/Fake)
-
----
-
-## 🎯 Dataset
-Dataset Used: **FaceForensics++ (Mini Subset)**
-
-Videos were converted into frames:
-
-```
-data/frames/real/<video_id>/
-data/frames/fake/<video_id>/
-```
-
-Each folder contains 50–150 frames per video.
-
----
-
-## 🔥 Sample Outputs
-
-### 🟦 Micro-Expression Motion Graph
-![Micro Expression Graph](results/micro_expression_motion_047_862.png)
-
-### 🔥 Grad-CAM Heatmap Example
-![GradCAM](gradcam_heatmap.jpg)
-
-### 🔥 Grad-CAM Overlay Example
-![Overlay](gradcam_overlay.jpg)
-
----
-
-## 📈 Training Metrics
-The training pipeline outputs:
-
-- Accuracy  
-- Precision  
-- Recall  
-- F1-score  
-- AUC (Area Under ROC Curve)  
-- Confusion Matrix  
-
-This ensures proper evaluation of both classification and detection performance.
-
----
-
-## 🏗 Project Structure
+## 📁 Folder Structure
 
 ```
 deepfake-detection/
 │
-├── data/
-│   ├── frames/
-│   └── raw/
-│
 ├── models/
-│   └── best_model.pt
+│     ├── cnn_lstm.py
+│     └── (weights downloaded separately)
 │
 ├── scripts/
-│   ├── train.py
-│   ├── gradcam_test.py
-│   ├── gradcam_video.py
-│   ├── blink_analysis.py
-│   └── micro_expression_analysis.py
+│     ├── train.py
+│     ├── run_inference.py
+│     ├── blink_analysis.py
+│     ├── micro_expression_analysis.py
+│     ├── gradcam_video.py
+│     └── gradcam_test.py
 │
 ├── utils/
-│   └── gradcam.py
+│     ├── blink.py
+│     ├── micro.py
+│     ├── fusion.py
+│     ├── gradcam.py
+│     └── __init__.py
 │
-└── README.md
+├── web_app/
+│     └── app.py
+│
+├── data/
+│     ├── raw/            (empty)
+│     ├── frames/         (empty)
+│     └── preprocessed/   (empty)
+│
+├── results/              (empty)
+│
+├── run_inference.py
+├── README.md
+└── requirements.txt
 ```
 
 ---
 
-## ▶️ Running the Project
+## 📥 Download Model Weights  
+Place the downloaded files into:
 
-### 🔹 Train Your Deepfake Detection Model
-```bash
-python scripts/train.py
+```
+models/
 ```
 
-### 🔹 Run Single-Frame Grad-CAM
-```bash
-python scripts/gradcam_test.py
+| Model Weight File | Size | Download Link |
+|-------------------|-------|------------------------------------------------------------|
+| **best_model.pt** | 25 MB | https://drive.google.com/file/d/1NroeFEm3OYvaPFjdTWQCU8nLsgW80ffC/view |
+| **cnn_lstm_detector.pt** | 21 MB | https://drive.google.com/file/d/1LA-9EJNK6n2nyO6uRVf3YZNpp-B5p9RV/view |
+| **deepfake_detector_full.pth** | 25 MB | https://drive.google.com/file/d/1fb5vsGwsvWCwVe19uy6Vk7FeSTUu9KBo/view |
+| **deepfake_detector_weights.pth** | 15 MB | https://drive.google.com/file/d/1ZD0VDUaKN_Qh2n7OQ_B-M-yMkpneKSZ9/view |
+
+---
+
+## 📦 Dataset Setup (FaceForensics++ Mini Subset)
+
+Download the dataset and place it into:
+
+```
+data/raw/
 ```
 
-### 🔹 Generate Full Grad-CAM Video
+Run preprocessing to generate:
+- frames  
+- resized images  
+- dataloaders  
+
+---
+
+## 🧠 Model Architecture
+
+### CNN (MobileNetV2)
+Extracts spatial facial features per frame.
+
+### LSTM  
+Processes temporal sequence of CNN features.
+
+### Classifier  
+Outputs deepfake probability from temporal features.
+
+---
+
+## 🏋️ Training
+
+Run training (Colab recommended):
+
 ```bash
-python scripts/gradcam_video.py
+python scripts/train.py --epochs 5 --batch_size 2
 ```
 
-### 🔹 Blink Behaviour Analysis
-```bash
-python scripts/blink_analysis.py
+Automatically saves:
 ```
-
-### 🔹 Micro-Expression Motion Analysis
-```bash
-python scripts/micro_expression_analysis.py
+best_model.pt
 ```
 
 ---
 
-## 👥 Team Members
+## 🔍 Inference (CLI)
 
-### **Abhishek B. — Team Lead**
-- Model Architecture  
-- Training Pipeline  
-- Grad-CAM Visualization  
-- System Design  
+```bash
+python scripts/run_inference.py --video your_video.mp4 --weights models/cnn_lstm_detector.pt
+```
 
-### **Deeksha — Research & Testing**
-- Behavioural Pattern Analysis  
-- Blink/Micro-expression Studies
-- Testing & Verification-1
-- Documentation Support-1  
-
-### **Khushi Agarwal — Research & Testing**
-- Dataset Processing  
-- Evaluation Metrics  
-- Testing & Verification-2
-- Documentation Support-2 
-
-### 🎓 **College**
-**Lovely Professional University**
+Outputs:
+- FAKE / REAL  
+- Confidence score  
+- Blink count  
+- Micro-expression irregularity  
+- Grad-CAM heatmaps saved to disk  
 
 ---
 
-## 📝 Conclusion
-This project successfully demonstrates:
+## 🌐 Gradio Web App
 
-- Behaviour-based deepfake detection  
-- Frame-level manipulation localization  
-- Micro-expression and blink anomaly detection  
-- A complete deep learning pipeline for research & deployment  
+Run:
 
-It provides a **robust and explainable AI solution** for modern deepfake detection challenges.
+```bash
+python web_app/app.py
+```
 
----
-
-## ⭐ Future Enhancements
-
-- Real-time webcam-based deepfake detection  
-- Multi-modal deepfake analysis (audio + video)  
-- Transformer-based temporal modelling  
-- Higher-resolution facial landmark tracking  
+Features:
+- Upload video  
+- Model predicts real/fake  
+- Explainability output  
+- Visual Grad-CAM highlights  
 
 ---
 
-## 📎 Contact
-For queries, collaboration, or improvements:  
+## 🔥 Features Demonstrated
 
-<p align="center">
+- Hybrid physiological + deep learning pipeline  
+- EAR blink detection  
+- Landmark micro-expression tracking  
+- CNN + LSTM temporal model  
+- Grad-CAM explainability  
+- End-to-end video inference  
+- Clean modular Python package structure  
 
-<b>Abhishek&nbsp;|&nbsp;Deeksha</b>;|&nbsp;Khushi&nbsp
+---
 
-<a href="https://www.linkedin.com/in/abhishek-bathnotra-b18075374/">
-<img src="https://img.shields.io/badge/LinkedIn-Abhishek_Bathnotra-blue?style=for-the-badge&logo=linkedin" />
-</a>
+## 🚀 Future Improvements
 
-&nbsp;&nbsp;&nbsp;
+- EfficientNet-Lite or ViT backbones  
+- 3D CNN temporal modeling  
+- Larger datasets (DFDC, CDF-v2)  
+- Face alignment + segmentation  
+- On-device mobile deployment  
 
-<a href="https://www.linkedin.com/in/deeksha-%E2%80%8E-23a320297/">
-<img src="https://img.shields.io/badge/LinkedIn-Deeksha-blue?style=for-the-badge&logo=linkedin" />
-</a>
+---
 
+## 🤝 Credits
 
-&nbsp;&nbsp;&nbsp;
+- Mediapipe for blink + facial landmark extraction  
+- PyTorch for CNN-LSTM model  
+- FaceForensics++ for dataset  
+- Gradio for UI  
+- Guided development with Deepfake Mentor (ChatGPT)
 
-<a href="https://www.linkedin.com/in/khushi-agarwal-683a49287/">
-<img src="https://img.shields.io/badge/LinkedIn-Khushi_Agarwal-blue?style=for-the-badge&logo=linkedin" />
-</a>
+---
 
+## 📌 Notes
 
-</p>
+This repository includes **all source code**, but excludes:
+- Large trained weights (download separately)
+- Large datasets  
+- Temp frames & Grad-CAM videos  
+
+This keeps the repo clean, lightweight, and professional.
+
