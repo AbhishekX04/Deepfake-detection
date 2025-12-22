@@ -66,11 +66,11 @@ deepfake-detection/
 │     └── app.py
 │
 ├── data/
-│     ├── raw/            (empty)
-│     ├── frames/         (empty)
-│     └── preprocessed/   (empty)
+│     ├── raw/           
+│     ├── frames/         
+│     └── preprocessed/   
 │
-├── results/              (empty)
+├── results/              
 │
 ├── run_inference.py
 ├── README.md
